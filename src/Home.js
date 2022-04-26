@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Home.css"
 import Product from './Product'
+import axios from "axios";
 
 function Home() {
+  const gitHubUrl = "http://localhost:8000/products"; // https://api.github.com/users/deekshasharma ca fonctionne avec ca 
+    const [productData, setProductData] = useState({});
+    useEffect(() => {
+        getGitHubUserWithFetch();
+      }, []);
+      
+      const getGitHubUserWithFetch = async () => {
+        const response = await fetch(gitHubUrl);
+        const jsonData = await response.json();
+        setProductData(jsonData);
+      };
+      console.log(productData)
+      
+      
   return (
     <div className="home">
 
@@ -20,7 +35,7 @@ function Home() {
 
             </div>
             <div className="home__row">
-            <Product />
+            <Product  />
             <Product />
             <Product />
 

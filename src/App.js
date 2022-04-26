@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, Component} from 'react'
 import Header from './Header'
 import Home from './Home'
 import './App.css';
@@ -15,9 +15,11 @@ import {Elements} from "@stripe/react-stripe-js"
 const promise = loadStripe('pk_test_51K1CSAEzxIhF9A3EPodZy28tDf3j09wK1opR6EReT0k7MkxyEJ2lrdPBqZxllM8DIrrsmTUFe4MB0QdaiI9NX6Uv00MRqACOg9');
 
 
+
 function App() {
   const [{}, dispatch] = useStateValue();
-
+  
+  
   useEffect(()=>{
 
     auth.onAuthStateChanged(authUser =>{

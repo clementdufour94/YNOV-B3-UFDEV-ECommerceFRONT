@@ -1,9 +1,12 @@
 import React from 'react'
 import "./Product.css"
 import {useStateValue} from "./StateProvider"
+import {useHistory} from "react-router-dom"
 
 
 function Product({id, title, image,price,rating}) {
+    const history = useHistory();
+    
     
     
     
@@ -23,6 +26,10 @@ function Product({id, title, image,price,rating}) {
         })
 
     }
+   
+    
+    
+    
     
     
    
@@ -32,13 +39,19 @@ function Product({id, title, image,price,rating}) {
       
         <div className="product">
             <div className="product__info">
-                <p>{title}</p>
+                <p className="product__title">{title}</p>
                 <p className="product__price">
                     <small>$</small>
                     <strong>{price}</strong>
                 </p>
             
-                <div className="product__rating">
+                
+            </div>
+            <img src={image}
+            alt=""></img>
+            
+            <a href="#" className="cart-btn" onClick={e=> history.push(`/product/${id}`)} >View Description</a>
+            <div className="product__rating">
                     {Array(rating).fill()
                     .map((_, i) =>(
                         <p>⭐</p>
@@ -46,10 +59,6 @@ function Product({id, title, image,price,rating}) {
                     ))}
                     
                 </div>
-            </div>
-            <img src={image}
-            alt=""></img>
-            <button onClick={addToBasket}>Add to Basket</button>
 
         </div>
 

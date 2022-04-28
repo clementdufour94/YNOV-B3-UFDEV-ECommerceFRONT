@@ -1,12 +1,15 @@
 import React, {useEffect, Component} from 'react'
 import Header from './Header'
 import Home from './Home'
+import Productdescription from './Productdescription'
 import './App.css';
 import Checkout from './Checkout'
 import {BrowserRouter as Router, Switch, Route}
 from "react-router-dom";
 import Login from "./Login"
 import Payment from "./Payment"
+
+import AddProduct from './AddProduct';
 import {auth} from "./firebase"
 import {useStateValue} from "./StateProvider";
 import {loadStripe} from "@stripe/stripe-js"
@@ -45,10 +48,20 @@ function App() {
       <div className="App">
       
         <Switch>
+        
 
           <Route path="/login">
              <Login />
           
+          </Route>
+          <Route path="/addproduct">
+            <Header />
+            <AddProduct/>
+          </Route>
+          <Route path="/product/:productId">
+            <Header />
+            <Productdescription />
+
           </Route>
 
 

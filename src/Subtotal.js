@@ -30,7 +30,8 @@ function Subtotal() {
         
         
         />
-        <button onClick={e=> history.push('/payment')}>Proceed to Checkout </button>
+        
+        <a href="#" onClick={e=> history.push('/payment')} className="cart-btn">Proceed to Checkout</a>
 
 
 

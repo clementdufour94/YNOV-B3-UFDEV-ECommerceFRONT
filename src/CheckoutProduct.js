@@ -26,7 +26,8 @@ function CheckoutProduct({id, image,title,price,rating}) {
                 ))} 
 
             </div>
-            <button onClick={removeFromBasket}>Remove from basket</button>
+            
+            <a href="#" onClick={removeFromBasket} className="cart-btn">Remove from basket</a>
 
         </div>
 

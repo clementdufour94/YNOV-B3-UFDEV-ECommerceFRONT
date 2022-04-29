@@ -18,13 +18,18 @@
     margin-right: 5px;
 }
 
-.subtotal > button{
-    background:#f0c14b;
-    border-radius:2px;
-    width: 100%;
-    height:30px;
-    border:1px solid;
-    margin-top:10px;
-    border-color: #a88734 #9c7e31 #846a29;
-    color: #111;
+.cart-btn{
+    display: inline-block;
+    background-color: #6430BC
+    ;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+  
 }
+.cart-btn:hover {
+    background-color: #505BC7;
+  }

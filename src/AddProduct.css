@@ -29,7 +29,9 @@
 .payment__container >h1 a{
     text-decoration: none;
 
+
 }
+
 .payment__section{
     display:flex;
     padding:20px;
@@ -41,4 +43,8 @@
 }
 .payment__address, .payment__items, .payment__details{
     flex:0.8;
+    
+}
+.test{
+    text-align:center;
 }

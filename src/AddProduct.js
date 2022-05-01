@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react'
 import "./AddProduct.css"
+import Select from 'react-select'
 
 function AddProduct() {
     const [postId, setPostId] = useState(null);
+    
     useEffect(() => {
         // POST request using fetch inside useEffect React hook
         const requestOptions = {
@@ -17,6 +19,21 @@ function AddProduct() {
     
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
     }, []);
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
+    const display = undefined 
+
+    const handleCategory = () => {
+        
+        
+        console.log(display)
+       
+
+    }
+      
   return (
     <div className="payment">
         <div className="payment__container">
@@ -79,12 +96,36 @@ function AddProduct() {
                 </div>
 
             </div>
+
+            <div className="payment__section">
+                <div className="payment__title">
+                        <h3>Category</h3>
+                </div>
+                <div className="payment__details">
+                    
+                        
+                        <div className="payment__priceContainer" style={{display: `${{display:true}}`}}>
+                        
+                        <Select options={options} name="option"   />
+                        <button className="addproduct-btn" onClick={handleCategory}>Add Category</button>
+
+                        </div>
+                        
+                   
+
+                </div>
+
+            </div>
             
 
         </div>
-        
-          <button className="addproduct-btn">Add Product</button>
+        <div className="test">
+            <button className="addproduct-btn">Add Product</button>
 
+
+        </div>
+        
+          
       
         
 

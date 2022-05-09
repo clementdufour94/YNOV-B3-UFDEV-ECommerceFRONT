@@ -55,7 +55,7 @@ function App() {
              <Login />
           
           </Route>
-          <Route path="/addproduct">
+          <Route path="/product/create">
             <Header />
             <AddProduct/>
           </Route>

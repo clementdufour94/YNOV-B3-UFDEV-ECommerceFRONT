@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './Login.css'
 import {Link, useHistory} from "react-router-dom"
 import {auth} from "./firebase"
+import logo from './img/Image2.png'
 
 function Login() {
     const history = useHistory();
@@ -28,7 +29,7 @@ function Login() {
   return (
     <div className="login">
         <Link to='/'> 
-            <img className="login__logo" src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' alt=''>
+            <img className="login__logo" src={logo} alt=''>
             </img>
 
         </Link>
@@ -42,12 +43,12 @@ function Login() {
                 <button type="submit" onClick={signIn} className="login__signInButton">Sign in</button>
             </form>
             <p>
-                By signing-in you agree to AmaClone's
+                By signing-in you agree to Clemazon's
                  Conditions of Use & Sale. Please
                  see our Privacy Notice, our Cookies Notice
                  and our Interest-Based Adds Notice.
             </p>
-            <button onClick={register} className="login__registerButton">Create AmaClone account</button>
+            <button onClick={register} className="login__registerButton">Create Clemazon account</button>
 
         </div>
 

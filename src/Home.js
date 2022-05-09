@@ -7,8 +7,9 @@ import Select from 'react-select'
 
 
 function Home() {
-  const apiURLProducts = "http://localhost:8000/products"; // https://api.github.com/users/deekshasharma ca fonctionne avec ca 
+  const apiURLProducts = "http://localhost:8000/products"; 
   const [productData, setProductData] = useState({});
+  const [selectedValue, setSelectedValue] = useState();
   useEffect(() => {
       getAPIProductWithFetch();
   }, []);
@@ -20,7 +21,7 @@ function Home() {
         
   };
 
-  const apiURLCategory = "http://localhost:8000/products"; // https://api.github.com/users/deekshasharma ca fonctionne avec ca 
+  const apiURLCategory = "http://localhost:8000/categories"; 
   const [categoryData, setCategoryData] = useState({});
   useEffect(() => {
       getAPICategoryWithFetch();
@@ -32,20 +33,26 @@ function Home() {
       setCategoryData(jsonData);
         
   };
-  console.log(categoryData)
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
-  if(options.label='Vanilla'){
-    console.log("vanilla")
-  }
   
-      
-      
-      
-      
+  
+  const options = [
+    
+    
+  ]
+  Object.values(categoryData).map((data, idx)=>( 
+    options.push({value: data.name, label: data.name})
+  ))
+
+  const handleChange = e => {
+    setSelectedValue(e.value);
+  }
+  console.log(selectedValue)
+  
+  
+  
+    
+  
+    
 
       
 
@@ -67,7 +74,7 @@ function Home() {
             alt="">
             </img>
             <div>
-            <Select options={options} />
+            <Select options={options} onChange={handleChange} />
             </div>
             
            
@@ -102,14 +109,11 @@ function Home() {
 
             
             <div className="home__row">
-            <Product id="1" title='Apple AirPods avec boîtier de Charge Filaire (2ᵉ génération)' price={128} image='https://images-eu.ssl-images-amazon.com/images/I/7120GgUKj3L._AC_UL906_SR906,600_.jpg'
-                  rating={5} />
-            <Product />
-            <Product />
+            
 
             </div>
             <div className="home__row">
-            <Product />
+            
 
             </div>
         

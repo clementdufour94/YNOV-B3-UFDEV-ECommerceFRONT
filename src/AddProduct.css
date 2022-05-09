@@ -18,6 +18,9 @@
   .payment{
     background-color: white;
 }
+.payment__input__category{
+    padding-bottom: 10px;
+}
 .payment__container > h1{
     text-align: center;
     padding:10px;

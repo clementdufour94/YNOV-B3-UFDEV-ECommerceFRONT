@@ -4,21 +4,24 @@ import Select from "react-select";
 
 function AddProduct() {
   const [postId, setPostId] = useState(null);
-
+   
+  
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id: "18",
+      
         name: "React Hooks POST Request Example",
         description: "test",
         photo: "photo",
-        average_score: 4,
+    
         price: 5,
+        quantity: 0
       }),
     };
+    
     fetch("http://localhost:8000/product/create", requestOptions)
       .then((response) => response.json())
       .then((data) => setPostId(data.id));
@@ -31,12 +34,23 @@ function AddProduct() {
     { value: "vanilla", label: "Vanilla" },
   ];
   const [display, setDisplay] = useState(true);
+  const [display2, setDisplay2] = useState(false)
 
   const handleCategory = () => {
-    setDisplay(false);
+    
+          setDisplay(false)
+          setDisplay2(true)
 
     console.log(display);
   };
+  const handleCategory2 = () => {
+    
+    setDisplay(true)
+    setDisplay2(false)
+
+console.log(display);
+};
+  
 
   return (
     <div className='payment'>
@@ -92,11 +106,24 @@ function AddProduct() {
               className='payment__priceContainer'
               style={{ display: display ? "block" : "none" }}
             >
-              <Select options={options} name='option' />
+                <div className='payment__input__category'><Select options={options} name='option' /></div>
+              
               <button className='addproduct-btn' onClick={handleCategory}>
-                Add Category
+                New category
               </button>
+              
             </div>
+            <div
+              className='payment__priceContainer'
+              style={{ display: display2 ? "block" : "none" }}
+            >
+                <div className='payment__input__category'><input type="text" placeholder="New category name"></input></div>
+              <button className='addproduct-btn' onClick={handleCategory2}>
+                View Category
+            </button>
+              
+            </div>
+            
           </div>
         </div>
       </div>

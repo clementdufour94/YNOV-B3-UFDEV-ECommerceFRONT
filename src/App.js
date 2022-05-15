@@ -4,6 +4,7 @@ import Home from './Home'
 import Productdescription from './Productdescription'
 import './App.css';
 import Checkout from './Checkout'
+import Test from './Test'
 import {BrowserRouter as Router, Switch, Route}
 from "react-router-dom";
 import Login from "./Login"
@@ -53,6 +54,10 @@ function App() {
 
           <Route path="/login">
              <Login />
+          
+          </Route>
+          <Route path="/test">
+             <Test />
           
           </Route>
           <Route path="/product/create">

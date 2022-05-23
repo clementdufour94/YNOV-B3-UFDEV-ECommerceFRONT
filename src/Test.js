@@ -6,10 +6,10 @@ function Test() {
   useEffect(() => {
     
     const axios = require('axios').default;
-      axios.post('http://localhost:8000/api/login', {
+      axios.post('http://localhost:8000/api/product/delete/2', {
       
-      email: "base64cod@mail.com",
-      password: "Passwordazert",
+      //email: "base64cod@mail.com",
+      //password: "Passwordazert",
     
     }).then(function (response){console.log(response)}).catch(function (error) {
         console.log(error);

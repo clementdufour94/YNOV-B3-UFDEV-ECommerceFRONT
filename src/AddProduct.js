@@ -225,7 +225,7 @@ const addProduct =(e)=>{
               className='payment__priceContainer'
               style={{ display: display2 ? "block" : "none" }}
             >
-                <div className='payment__input__category'><input type="text" value={category} onChange={(e)=>setCategory(e.target.value)} placeholder="New category name"></input></div>
+                <div className='payment__input__category'><input type="text" value={category.id} onChange={(e)=>setCategory(e.target.value)} placeholder="New category name"></input></div>
               <button className='addproduct-btn' onClick={handleCategory2} onChange={setSelectedOption}>
                 Add Category
             </button>

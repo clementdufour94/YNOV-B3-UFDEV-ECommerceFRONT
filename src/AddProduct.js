@@ -13,12 +13,39 @@ function AddProduct() {
   
   
   const [category, setCategory] = useState('')
-  
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [base64code, setBase64code] = useState('');
    
   
+  const onChange = (e) =>{
+    const files = e.target.files
+    const file = files[0];
+    
+    getbase64(file)
+  }
+  const onLoad = (fileString) =>{
+    setBase64code(fileString)
+    
+
+  }
+  
+  const getbase64 = (file) =>{
+    let reader = new FileReader()
+    
+    reader.readAsDataURL(file)
+    reader.onload = () =>{
+      onLoad(reader.result);
+    }
+
+  }
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
-    console.log(selectedOption)
+    //console.log(selectedOption)
+    console.log(base64code)
+    
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   });
   const apiURLCategory = "http://localhost:8000/categories"; 
@@ -37,6 +64,36 @@ function AddProduct() {
     
     
   ]
+const addProduct =(e)=>{
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+    
+      name: title,
+      description: description,
+      photo: base64code,
+      price:price,
+      quantity: quantity
+      
+  
+    }),
+  };
+  fetch("http://localhost:8000/api/product/create", requestOptions)
+    .then(function (response) {
+      return response.json
+      console.log("response")
+    })
+    
+    
+   setCurrentCategory(true)
+   
+
+}
+
+
+
+
 
   //ajout d'un const current category
   const handleCategory2 = (e) => {
@@ -57,11 +114,6 @@ function AddProduct() {
         .then((response) => response.json())
         .then((data) => setPostId(data.id));
        setCurrentCategory(true)
-        
-
-      
-      
-      
       
 };
   
@@ -103,7 +155,7 @@ function AddProduct() {
             <h3>Title</h3>
           </div>
           <div className='payment__address'>
-            <input type='text' placeholder='Enter name of product'></input>
+            <input type='text' required="required" onChange={event => setTitle(event.target.value)} placeholder='Enter name of product'></input>
           </div>
         </div>
         <div className='payment__section'>
@@ -111,9 +163,10 @@ function AddProduct() {
             <h3>Description</h3>
           </div>
           <div className='payment__items'>
-            <textarea cols='100' rows='3'></textarea>
+            <textarea required="required" onChange={event => setDescription(event.target.value)}  cols='100' rows='3'></textarea>
           </div>
         </div>
+        
         <div className='payment__section'>
           <div className='payment__title'>
             <h3>Photo</h3>
@@ -121,7 +174,7 @@ function AddProduct() {
           <div className='payment__details'>
             <form>
               <div className='payment__priceContainer'>
-                <input type='file'></input>
+                <input required="required" onChange={onChange} type='file'></input>
               </div>
             </form>
           </div>
@@ -133,7 +186,19 @@ function AddProduct() {
           <div className='payment__details'>
             <form>
               <div className='payment__priceContainer'>
-                <input type='float' placeholder='Enter price'></input>
+                <input type='number' required="required" onChange={event => setPrice(event.target.value)} placeholder='Enter price'></input>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className='payment__section'>
+          <div className='payment__title'>
+            <h3>Quantity</h3>
+          </div>
+          <div className='payment__details'>
+            <form>
+              <div className='payment__priceContainer'>
+                <input type='number' required="required" onChange={event => setQuantity(event.target.value)} placeholder='Enter quantity'></input>
               </div>
             </form>
           </div>
@@ -148,7 +213,7 @@ function AddProduct() {
               className='payment__priceContainer'
               style={{ display: display ? "block" : "none" }}
             >
-                <div className='payment__input__category'><Select options={options} defaultValue={selectedOption}
+                <div className='payment__input__category'><Select required="required" options={options} defaultValue={selectedOption}
         onChange={setSelectedOption}   name='option' /></div>
               
               <button className='addproduct-btn' onClick={handleCategory}>
@@ -171,7 +236,7 @@ function AddProduct() {
         </div>
       </div>
       <div className='test'>
-        <button className='addproduct-btn'>Add Product</button>
+        <button className='addproduct-btn' onClick={addProduct}>Add Product</button>
       </div>
     </div>
   );

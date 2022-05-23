@@ -1,26 +1,52 @@
 import React, { useState, useEffect } from "react";
 
 function Test() {
-    const [postId, setPostId] = useState(null);
-    useEffect(() => {
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-            
-              //name: "clement",
-              
-              email: "clement.dufourl@gmail.com",
-              password: "Azertyuiop94",
-              //password_confirmation: "Azertyuiop94"
-            }),
-          };
-          fetch("http://localhost:8000/api/login", requestOptions)
-            .then((response) => response.json())
-            .then((data) => setPostId(data.id));
-        
-    }, []);
+
+  
+  useEffect(() => {
     
+    const axios = require('axios').default;
+      axios.post('http://localhost:8000/api/login', {
+      
+      email: "base64cod@mail.com",
+      password: "Passwordazert",
+    
+    }).then(function (response){console.log(response)}).catch(function (error) {
+        console.log(error);
+      })
+   // axios.post('http://localhost:8000/api/product/create', {
+    //  name: "title",
+     // description: "description",
+     // photo: "base64code",
+    //  price:1,
+   //   quantity: 1
+  //  })
+     // .then(function (response) {
+        
+        
+     //   let data = JSON.stringify(response.data.id)
+     //   axios.post('http://localhost:8000/api/category/create', {
+     //     name: data,
+      //    identifier: data
+     // })
+     // .catch(function (error) {
+      //  console.log(error);
+     // });
+        
+     // })
+      //.catch(function (error) {
+        //console.log(error);
+      //});
+     
+      
+
+  });
+
+
+
+
+
+
 
 
   return (
